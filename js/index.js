@@ -1,105 +1,168 @@
-var curIndex = 0;
-//时间间隔(单位毫秒)
-var timeInterval = 500;
-
-var arr = new Array();
-arr[0] = "../img/lb_1.jpeg";
-arr[1] = "../img/lb_2.jpg";
-arr[2] = "../img/lb_3.jpeg";
-arr[3] = "../img/lb_4.jpg";
-setInterval(changeImg, timeInterval);
-function changeImg() {
-    if (curIndex == arr.length - 1) {
-        curIndex = 0;
-    } else {
-        curIndex += 1;
-    }
-
-    document.body.style.backgroundImage = "URL(" + arr[curIndex] + ")";
+/*
+------------------------封装区
+*/ 
+function $(selector) {
+    return document.querySelector(selector);
 }
 
-var index = 1;
-function lunbo() {
-    index++;
-    //判断index是否大于3
-    if (index > 3) {
-        index = 1;
+/*
+------------------------封装结束
+*/
+
+
+//回到顶部按钮的出现与消失
+window.addEventListener('scroll', function () {
+    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollTop >= 1000) {
+        $('.back_to_top').style.display = 'block';
+    } else if (scrollTop < 1000) {
+        $('.back_to_top').style.display = 'none';
     }
-    //获取img对象
-    var img = document.getElementById("lunbo_img");
-    img.src = "./pic/img" + index + ".jpeg";
+})
+
+
+//swiper的实现
+var swiper = new Swiper('.swiper', {
+    direction: 'horizontal', // 垂直切换选项
+    loop: true, // 循环模式选项
+    effect: 'fade',
+    autoplay: {
+        delay: 4000, // 自动切换时间:3秒
+    },
+    // 分页器
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        clickableClass: 'pagination-class',
+    },
+
+    // 前进后退按钮
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+})
+
+
+
+/*
+------------------------轮播图顶部折叠区部分
+*/
+// 选项卡展开
+var foldingDomain = function () {
+    for (i = 0; i < 7; i++) {
+        document.querySelectorAll('.hoverSelector')[i].addEventListener('mouseover', function () {
+            $('.hover_block').style.height = '200px';
+        })
+        document.querySelectorAll('.hoverSelector')[i].addEventListener('mouseout', function () {
+            $('.hover_block').style.height = '0px';
+        })
+    }
 }
-//2.定义定时器
-setInterval(lunbo, 2000);
+foldingDomain()
 
+// 选项卡悬停
+$('.hover_block').addEventListener('mouseover', function () {
+    this.style.height = '200px';
+})
+$('.hover_block').addEventListener('mouseout', function () {
+    this.style.height = '0px';
+})
 
-
-const DIRECTION_ENUM = {
-    DOWN: "down",
-    UP: "up",
-};
-
-// 距离顶部或底部的阈值
-const threshold = 20;
-
-// 记录前一个滚动位置
-let beforeScrollTop = 0;
-
-function handleScroll() {
-    // 距顶部
-    var scrollTop =
-        document.documentElement.scrollTop || document.body.scrollTop;
-    // 可视区高度
-    var clientHeight =
-        document.documentElement.clientHeight || document.body.clientHeight;
-    // 滚动条总高度
-    var scrollHeight =
-        document.documentElement.scrollHeight || document.body.scrollHeight;
-
-    // 打印数值
-    console.table([
-        {
-            label: "距顶部",
-            value: scrollTop,
-        },
-        {
-            label: "可视区高度",
-            value: clientHeight,
-        },
-        {
-            label: "滚动条总高度",
-            value: scrollHeight,
-        },
-        {
-            label: "距顶部 + 可视区高度",
-            value: scrollTop + clientHeight,
-        },
-    ]);
-
-    // 确定滚动方向
-    let direction = DIRECTION_ENUM.DOWN;
-    if (beforeScrollTop > scrollTop) {
-        direction = DIRECTION_ENUM.UP;
+// 清除选项卡折叠区
+var clearProducts = function () {
+    for (i = 0; i < 7; i++) {
+        document.querySelectorAll('.productInfo')[i].style.display = 'none'
     }
+}
+//单个选项的display显示
+$('.detail_1').addEventListener('mouseover', function () {
+    clearProducts();  //先清除折叠区
+    $('#d_miphones').style.display = 'block';   //再加载当前页
+})
+$('.detail_2').addEventListener('mouseover', function () {
+    clearProducts();
+    $('#d_rmphones').style.display = 'block';
+})
+$('.detail_3').addEventListener('mouseover', function () {
+    clearProducts();
+    $('#d_TVs').style.display = 'block';
+})
+$('.detail_4').addEventListener('mouseover', function () {
+    clearProducts();
+    $('#d_laptops').style.display = 'block';
+})
+$('.detail_5').addEventListener('mouseover', function () {
+    clearProducts();
+    $('#d_pads').style.display = 'block';
+})
+$('.detail_6').addEventListener('mouseover', function () {
+    clearProducts();
+    $('#d_householder').style.display = 'block';
+})
+$('.detail_7').addEventListener('mouseover', function () {
+    clearProducts();
+    $('#d_WIFIboxs').style.display = 'block';
+})
 
-    // 通过滚动方向判断是触底还是触顶
-    if (direction == DIRECTION_ENUM.DOWN) {
-        // 滚动触底
-        if (scrollTop + clientHeight + threshold >= scrollHeight) {
-            console.log("滚动触底");
-        }
-    } else {
-        // 滚动到顶部
-        if (scrollTop <= threshold) {
-            console.log("滚动到顶部");
-        }
-    }
+/*
+------------------------轮播图顶部折叠区部分结束
+*/
 
-    beforeScrollTop = scrollTop;
+
+
+/*
+------------------------登录与注册按钮点击事件、遮罩层、登陆页面等部分
+*/
+
+//遮罩层和登录页函数
+var loginUncover = function () {
+    $('.login_cover').style.display = 'none';
+    $('.login_page').style.display = 'none';
+}
+var loginCover = function () {
+    $('.login_cover').style.display = 'block';
+    $('.login_page').style.display = 'block';
 }
 
-// 滚动节流
-const throttleHandleScroll = throttleDebounce.throttle(1000, handleScroll);
+//登录a链接点击事件，打开遮罩层和登录页
+$('#logAlink').addEventListener('click', function () {
+    loginCover()
+    //选中登录模式（给予样式）
+    $('#mode_login').className = 'mode_chosed'
+    $('#mode_regist').className = ''
+    $('.login_page_body').style.display = 'block'
+    $('.register_page_body').style.display = 'none'
+})
+//注册a链接点击事件，打开遮罩层和注册页
+$('#regAlink').addEventListener('click', function () {
+    loginCover()
+    //选中注册模式（给予样式）
+    $('#mode_regist').className = 'mode_chosed'
+    $('#mode_login').className = ''
+    $('.login_page_body').style.display = 'none'
+    $('.register_page_body').style.display = 'block'
+})
+//登录页关闭按钮
+$('#closePage').addEventListener('click', function () {
+    loginUncover()
 
-// 监听滚动
-window.addEventListener('scroll', throttleHandleScroll);
+})
+
+//登录页中的登录和注册选择样式
+$('#mode_login').addEventListener('click', function () {
+    this.className = 'mode_chosed'
+    $('#mode_regist').className = ''
+    $('.login_page_body').style.display = 'block'
+    $('.register_page_body').style.display = 'none'
+})
+$('#mode_regist').addEventListener('click', function () {
+    this.className = 'mode_chosed'
+    $('#mode_login').className = ''
+    $('.login_page_body').style.display = 'none'
+    $('.register_page_body').style.display = 'block'
+})
+
+/*
+------------------------登录与注册按钮点击事件、遮罩层、登陆页面等部分结束
+*/
