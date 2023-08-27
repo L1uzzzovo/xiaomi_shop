@@ -17,6 +17,24 @@ body {
     float: right;
 }
 
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+input:focus,
+select:focus {
+    outline: #ffbe99 solid 1px;
+}
+
+input,
+select {
+    outline: none;
+}
+
+.pr {
+    position: relative;
+}
 
 
 /* ---------------头部-------------- */
@@ -28,7 +46,7 @@ body {
     background-color: #333333;
     text-align: center;
     line-height: 40px;
-    z-index: 999;
+    z-index: 444;
 }
 
 .inline {
@@ -98,11 +116,266 @@ body {
 }
 
 
+/* 遮罩层样式 */
+.login_cover {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #202020b2;
+    z-index: 1000;
+    display: none;
+}
+
+/* 登录页样式 */
+.login_page {
+    width: 400px;
+    height: 500px;
+    background-color: #fff;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    border-radius: 10px;
+    overflow: hidden;
+    display: none;
+    user-select: none;
+}
+
+.login_page>.login_page_nav {
+    width: 380px;
+    height: 40px;
+    padding: 0 10px;
+    color: #333333;
+    background-color: #e2e2e2;
+    position: relative;
+}
+
+.login_page>.login_page_nav span {
+    position: absolute;
+    font-weight: 700;
+    top: 50%;
+    left: 50px;
+    transform: translateY(-50%);
+}
+
+.login_logo {
+    display: inline-block;
+    background-image: url('../img/icon-xiaomi.png');
+    background-size: cover;
+    /* background-color: red; */
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+}
+
+.login_page>.login_page_nav a {
+    color: #838383;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.login_page>.login_page_nav a:hover {
+    color: #ff8615;
+}
+
+#closePage {
+    color: #333333;
+}
 
 
+/* 登录页 登录主体部分（切换时调整的display） */
+.login_page_body,
+.register_page_body {
+    width: 300px;
+    height: 400px;
+    margin: 20px auto;
+    /* background-color: #72e9c5; */
+}
+
+.change_mode {
+    width: 300px;
+    height: 40px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-left: 40px;
+    /* background-color: #f0abab; */
+    display: flex;
+    justify-content: start;
+}
+
+
+#mode_login,
+#mode_regist {
+    font-size: 24px;
+    width: auto;
+    height: 40px;
+    margin-left: 10px;
+    border: none;
+    color: #d2d2d2;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.mode_chosed {
+    color: #333333 !important;
+    border-bottom: 4px solid #ff5c00 !important;
+}
+
+.login_page .loginInput {
+    width: 300px;
+    height: 50px;
+    margin: 0 0 20px;
+    background-color: #f9f9f9;
+    border: none;
+    border-radius: 4px;
+    text-indent: 14px;
+}
+
+.login_page .chk_box {
+    color: #ceb8c3;
+    font-size: 10px;
+    text-align: left;
+    margin-top: -14px;
+}
+
+.login_page .chk_box a {
+    color: #8c85a3;
+    text-decoration: none;
+}
+
+.login_page_btn {
+    width: 300px;
+    height: 50px;
+    margin: 6px 0 6px;
+    background-color: #ffbe99;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+.login_page_btn:hover {
+    background-color: #ffcba9;
+}
+
+.login_page .links {
+    margin-top: -10px;
+}
+
+.login_page .links a {
+    color: #ff7646;
+    font-size: 14px;
+    transition: all .5s;
+}
+
+.login_page .links a:hover {
+    color: #ff9098;
+}
+
+.other_way {
+    color: #b1c2d5;
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+.logo_login {
+    width: 280px;
+    height: 60px;
+    /* background-color: #a84040; */
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo_login>i {
+    width: 46px;
+    height: 46px;
+    border-radius: 23px;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.logo_login_1 {
+    background-image: url(../img/zhifubao.svg);
+}
+
+.logo_login_2 {
+    background-image: url(../img/weixin.svg);
+}
+
+.logo_login_3 {
+    background-image: url(../img/QQ.svg);
+}
+
+.logo_login_4 {
+    background-image: url(../img/weibo.svg);
+}
+
+/* 登录页 注册主体部分（切换时调整的display） */
+.register_page_body {
+    display: none;
+}
+
+#countrySelector select {
+    width: 300px;
+    height: 50px;
+    margin: 0 0 20px;
+    background-color: #f9f9f9;
+    border: none;
+    border-radius: 4px;
+    text-indent: 14px;
+}
+
+.input_title {
+    position: absolute;
+    color: #aaa;
+    font-size: 10px;
+    top: -10px;
+    left: 18px;
+}
+
+
+#phoneNumber select {
+    width: 100px;
+    height: 50px;
+    background-color: #f9f9f9;
+    border: none;
+    border-radius: 4px;
+    text-indent: 14px;
+}
+
+
+
+
+
+.login_page>.login_page_footer {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translate(-50%);
+    line-height: 12px;
+    font-size: 6px;
+    color: #a39fa6;
+}
+
+.input_title {
+    position: absolute;
+}
+
+
+
+/* -------------------logo、分类、搜索栏---------------------- */
 
 .head_dsc {
-    height: 86px;
+    background-color: #fff;
+    height: 98px;
     width: 1226px;
     position: absolute;
     left: 0;
@@ -115,7 +388,6 @@ body {
     display: inline-flex;
     justify-content: center;
     /* background-color: #ac1a1a; */
-    z-index: 101;
 }
 
 .logo {
@@ -140,19 +412,25 @@ body {
     line-height: 56px;
     margin-top: 20px;
     margin-left: 120px;
-    z-index: 88;
+    display: flex;
+    justify-content: center;
 }
 
 .head_dsc_main a {
+    display: inline-block;
+    width: auto;
+    height: 80px;
     font-size: 14px;
     color: black;
     text-decoration: none;
+    padding: 0 10px;
+    margin: 0;
+
 }
 
 .head_dsc_main a:hover {
     color: #ff6a00;
     transition: all 0.3s;
-    z-index: 8;
 }
 
 .search {
@@ -190,14 +468,74 @@ body {
     outline: none;
     line-height: 54px;
     font-size: 16px;
+    text-indent: 20px;
+}
+
+
+
+
+
+/* -----------------------------轮播图上部展开(js)---------------------------------- */
+
+.productInfo {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    /* height: 0; */
+    background-color: #fff;
+    /* background-color: rgb(163, 98, 98); */
+    display: flex;
+    z-index: -1;
+}
+
+.productInfo ul {
+    list-style-type: none;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+}
+
+.productInfo li {
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin-top: 20px;
+    border-right: 1px solid #f1f1f1;
+}
+
+.productInfo li:last-child {
+    border-right: none;
+}
+
+
+.productInfo li img {
+    width: 160px;
+    height: 110px;    
+    cursor: pointer;
+}
+
+
+.hover_block {
+    background-color: #c54141;
+    position: absolute;
+    top: 80px;
+    left: -120px;
+    width: 1226px;
+    height: 0px;
+    overflow: hidden;
+    transition: all 0.3s ease 0s;
+    border-bottom: 1px solid #f1f1f1;
+    border-left: 1px solid #f1f1f1;
+    border-right: 1px solid #f1f1f1;
+    z-index: 99;
 }
 
 
 
 /* -----------------------------轮播图上部展开(过渡)---------------------------------- */
-
-
-.head_dsc_main>div {
+/* .head_dsc_main>div {
     position: absolute;
     top: -80px;
     left: 0;
@@ -318,7 +656,9 @@ body {
     display: inline-block;
     height: 80px;
     z-index: 999;
-}
+} */
+
+
 
 
 /* -----------------------------轮播图上部展开(动画)---------------------------------- */
@@ -354,35 +694,6 @@ body {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ---------------轮播图区内容-------------- */
 
 .main_shop {
@@ -401,82 +712,13 @@ body {
     height: 460px;
 } */
 
-.lunbo {
-    width: 100%;
-    margin: 0 auto;
-    background-size: 1226px 460px;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    background-image: url("../img/lb_1.jpeg"), url("../img/lb_2.png"), url("../img/lb_3.jpeg"), url("../img/lb_4.jpg");
-    animation: frams 15s infinite;
-    /*动画时间*/
-}
-
-/* background-image: url(../img/lb_1.jpeg); */
-
-
-/* 动画时长安排 */
-@keyframes frams {
-
-    /* 1 */
-    0% {
-        background-image: url("../img/lb_1.jpeg");
-        background-size: 1226px 460px;
-        background-repeat: no-repeat
-    }
-
-    20% {
-        background-image: url("../img/lb_1.jpeg");
-        background-size: 1226px 460px;
-        background-repeat: no-repeat
-    }
-
-    /* 2 */
-    25% {
-        background-image: url("../img/lb_2.png");
-        background-size: 1226px 460px;
-        background-repeat: no-repeat
-    }
-
-    45% {
-        background-image: url("../img/lb_2.png");
-        background-size: 1226px 460px;
-        background-repeat: no-repeat
-    }
-
-    /* 3 */
-    50% {
-        background-image: url("../img/lb_3.jpeg");
-        background-size: 1226px 460px;
-        background-repeat: no-repeat
-    }
-
-    70% {
-        background-image: url("../img/lb_3.jpeg");
-        background-size: 1226px 460px;
-        background-repeat: no-repeat
-    }
-
-    /* 4 */
-    75% {
-        background-image: url("../img/lb_4.jpg");
-        background-size: 1226px 460px;
-        background-repeat: no-repeat
-    }
-
-    95% {
-        background-image: url("../img/lb_4.jpg");
-        background-size: 1226px 460px;
-        background-repeat: no-repeat
-    }
-}
-
-
 .lunbo>ul {
+    position: relative;
     width: 234px;
     height: 420px;
     padding: 20px 0;
-    background-color: rgba(0, 0, 0, .2);
+    background-color: rgba(100, 100, 100, 0.6);
+    z-index: 1;
 }
 
 .lunbo .lunbolist {
@@ -484,6 +726,8 @@ body {
     height: 42px;
     line-height: 42px;
     padding: 0 10px 0 30px;
+    color: #fff;
+    cursor: pointer;
 }
 
 .lunbolist:hover {
@@ -493,11 +737,65 @@ body {
 }
 
 
+
+
+/* 轮播图区内容 */
+.main_shop>.swiper {
+    width: 1226px;
+    height: 460px;
+    position: absolute;
+    /* top: -460px; */
+    z-index: 0;
+}
+
+.main_shop .swiper-slide>img {
+    width: 1226px;
+    height: 460px;
+    z-index: -9;
+}
+
+.swiper {
+    position: relative;
+    --swiper-pagination-color: rgb(104, 104, 104);
+    cursor: pointer;
+}
+
+div[class^='swiper-button'] {
+    color: #d3d3d3;
+}
+
+div[class^='swiper-button']:hover {
+    color: #666970;
+}
+
+.swiper>.swiper-button-prev {
+    position: absolute;
+    left: 240px;
+    --swiper-navigation-size: 34px;
+}
+
+.swiper>.swiper-button-next {
+    position: absolute;
+    --swiper-navigation-size: 34px;
+}
+
+
+.swiper-pagination {
+    position: absolute !important;
+    width: 1200px !important;
+    font-size: 10px !important;
+    text-align: right !important;
+    bottom: 30px !important;
+    color: #999;
+}
+
+
+
 /* <!-- 轮播图箭头 --> */
 
 
 
-.btn_left {
+/* .btn_left {
     width: 28px;
     height: 56px;
     position: absolute;
@@ -516,22 +814,22 @@ body {
 }
 
 .btn_left:hover {
-    background:linear-gradient(to right,#888888, transparent);
+    background: linear-gradient(to right, #888888, transparent);
     transition: all 0.5s;
 }
 
 .btn_right:hover {
-    background:linear-gradient(to left,#888888,transparent);
+    background: linear-gradient(to left, #888888, transparent);
     transition: all 0.5s;
-}
+} */
 
 
 
 /* <!-- 轮播图圆圈 --> */
-.lb_backbar {
+/* .lb_backbar {
     width: 100px;
     height: 24px;
-    /* background-color: rgba(182, 182, 182, 0.4); */
+    background-color: rgba(182, 182, 182, 0.4);
     border-radius: 10px;
     position: absolute;
     bottom: 20px;
@@ -551,7 +849,7 @@ body {
 
 .lb_backbar>div:hover {
     background-color: #f1f1f1;
-}
+} */
 
 
 
@@ -699,11 +997,12 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    transition: all 0.5s;
 }
 
 .unfold_text li a:hover {
     color: #ff6700;
-    transition: all 0.5s;
+
 }
 
 
@@ -736,6 +1035,7 @@ body {
     border-left: 1px solid #665e57;
     display: inline-block;
     overflow: hidden;
+    transition: all 0.5s;
 }
 
 .intro_left a {
@@ -746,7 +1046,7 @@ body {
 
 .intro_left li:hover {
     opacity: 1;
-    transition: all 0.5s;
+
 }
 
 .intro_left li img {
@@ -846,9 +1146,12 @@ body {
     position: absolute;
 }
 
+.floor_l_t img {
+    transition: all 0.5s;
+}
+
 .floor_l_t img:hover {
     box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
-    transition: all 0.5s;
 }
 
 .floor_l_b {
@@ -856,8 +1159,16 @@ body {
     top: 314px;
 }
 
+.floor_l_b img {
+    transition: all 0.5s;
+}
+
 .floor_l_b img:hover {
     box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s;
+}
+
+.floor_l img {
     transition: all 0.5s;
 }
 
@@ -880,11 +1191,11 @@ body {
     list-style-type: none;
     background-color: #fff;
     display: inline-block;
+    transition: all 0.5s;
 }
 
 .floor_r li:hover {
     box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
-    transition: all 0.5s;
 }
 
 
@@ -1256,7 +1567,7 @@ body {
     /* background-color: #09adee; */
     background-color: #fff;
     flex-shrink: 1;
-    z-index: 3333;
+    z-index: 333;
 }
 
 .home-tool-bar .item {
@@ -1358,6 +1669,7 @@ body {
     cursor: pointer;
     color: #757575;
     text-decoration: none;
+    display: none;
 }
 
 .back_to_top:hover {
